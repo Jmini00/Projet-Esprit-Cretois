@@ -1,0 +1,695 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+@keyframes anim-slider-pub-soldes {
+    0% {
+        left: -40%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes anim-slider-pub-apple {
+    0% {
+        top: -35%;
+        opacity: 0;
+    }
+
+    100% {
+        top: 40%;
+        opacity: 1;
+    }
+}
+
+@keyframes anim-slider-on {
+    0% {
+        left: -100vw
+    }
+
+    100% {
+        left: 0
+    }
+
+    ;
+}
+
+@keyframes anim-slider-off {
+    0% {
+        left: 0
+    }
+
+    100% {
+        left: -100vw
+    }
+
+    ;
+}
+
+@keyframes animReadMore {
+    0% {opacity: 0;color: #000;}
+    100% {opacity: 1; color: #000;}
+    
+}
+
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+/* selecteurs de type */
+html {
+    font-size: 17px;
+    /* correspond à 1 rem*/
+}
+
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    /* composition d'image de fond*/
+    /*
+    background-color: #ddd;
+    background-image: url("../images/img-carre.jpg") ,  url("../img/header.jpg");
+    background-repeat: repeat, no-repeat;
+    background-position: 50px 50px , 50% 0;
+    background-attachment: fixed, scroll ;*/
+
+    /*background-size: 100%;  responsive  */
+    background: #ddd;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Caveat', cursive;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+strong {
+    font-weight: normal;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+    transition: all .7s;
+
+}
+
+/* optimisation sur les balise i
+a, i {
+    transition: all .7s;
+}
+*/
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+hr {
+    margin: 30px 10px
+}
+
+/* images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* position fixed */
+#back-to-top {
+    position: fixed;
+    bottom: 10vh;
+    right: 5vw;
+    display: block;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    padding-top: 10px;
+    background: #12247a;
+    color: #fff;
+    border-radius: 50%;
+    /* attention au prefixes -webkit-  ...*/
+    transition: all .5s
+}
+
+#back-to-top:hover {
+    transform: rotate(360deg);
+}
+
+#nav-top-fixed {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    padding: 3px 5px;
+    z-index: 1;
+}
+
+#nav-top-fixed ul {
+    justify-content: flex-end;
+}
+
+#nav-top-fixed ul li {
+    margin-right: 20px;
+}
+
+#nav-top-fixed ul li a {
+    color: #12247a;
+}
+
+#nav-top-fixed i {
+    transition: all .5s;
+}
+
+#nav-top-fixed i:hover {
+    transform: translateY(-5px);
+}
+
+/* bouton slider fixed */
+.container {
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    background: #12247a;
+    color: #fff;
+    border-radius: 50%;
+    top:40vh;
+    left: 1vw;
+    z-index: 2;
+}
+
+.bar1,.bar2,.bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+    position: relative;
+    left: 10px;
+    top: 7px;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+#menu-slider {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #12247a;
+    left:-100vw;
+    z-index: 2;
+} 
+
+.anim-slider-on {
+    animation: anim-slider-on .7s forwards;
+}
+.anim-slider-off {
+    animation: anim-slider-off .7s forwards;
+}
+
+
+
+
+/* classes (reutilisables sur plusieurs éléments: bibliothèque de design */
+.gabarit {
+    width: 80%;
+    /**responsive 80% de la dimension du conteneur */
+    margin: auto;
+}
+
+.fond-bleu {
+    background: #12247a;
+}
+
+.text-blanc {
+    color: #fff
+}
+
+/* icones */
+/* commun à tous les icones */
+.icon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* icone panier */
+.cart::before {
+    font: var(--fa-font-solid);
+    content: "\f07a";
+}
+
+.tiktok::before {
+    font: var(--fa-font-brands);
+    content: "\e07b";
+}
+
+.align-horiz {
+    display: flex;
+    /* default row | no-wrap */
+}
+
+.align-horiz-space-between {
+    justify-content: space-between;
+}
+
+.align-horiz-space-around {
+    justify-content: space-around;
+}
+
+.align-horiz-center {
+    justify-content: center;
+}
+
+.align-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, .3);
+    box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, .3);
+}
+
+.text-shadow {
+    text-shadow: 3px 3px 5px #aaa;
+}
+
+.gradient {
+    /* degradé*/
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,207cca+72,7db9e8+100 */
+    background: linear-gradient(to bottom, #1e5799 0%, #207cca 72%, #7db9e8 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+
+
+
+/* redim/recadrer les images
+ATTENTION de bien les redimensionner au préalable
+*/
+article img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: all .5s;
+    opacity: 1;
+    /* par defaut pas obligatoire */
+}
+
+article img:hover {
+    opacity: .7;
+}
+
+/* structure du document ou de composants */
+#mobile-bt {
+    display: none;
+}
+
+
+header div .align-horiz {
+    align-items: center;
+}
+
+header .gabarit img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    position: relative;
+    top: 30px;
+    z-index: 1;
+}
+
+header h1 {
+    width: calc(100% - 120px);
+    text-align: center;
+}
+
+header img {
+    display: block;
+}
+
+header>div:first-of-type {
+    padding-top: 40px;
+}
+
+#news article p {
+    width: calc(100% - 150px);
+    margin: 0 0 0 10px;
+}
+
+.hidden-p {
+    display: none;
+}
+
+article button {
+    background: #c7c0c0;
+    border-radius: 5px;
+    border-color: red;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.animReadMore {
+    display: block;
+    animation: animReadMore .7s forwards;
+}
+
+#slider {
+    position: relative;
+    /* sert de reference (guide) pour le positionnement des element en position absolute à l'interieur de slider*/
+    overflow: hidden;
+}
+
+#slider div:first-of-type {
+    font-size: 2.5rem;
+    background: rgba(0, 0, 0, .7);
+    text-align: center;
+    padding: 30px;
+    position: absolute;
+    width: 70%;
+    top: 50%;
+    left: -35%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    overflow: hidden;
+    animation: anim-slider-pub-soldes .7s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+#slider i {
+    position: absolute;
+    top: -37%;
+    left: 65%;
+    color: #fff;
+    animation: anim-slider-pub-apple .7s 1s;
+    animation-fill-mode: forwards;
+}
+
+#primary-nav ul li a {
+    color: #fff;
+    padding: 15px 35px;
+    display: block;
+}
+
+#primary-nav ul li a:hover {
+    color: #12247a;
+    background: #fff;
+    text-decoration: none;
+}
+
+#primary-nav li:last-child a::before {
+    margin-right: 7px;
+}
+
+main {
+    width: 75%;
+    padding: 20px;
+}
+
+main section {
+    margin-bottom: 10vh;
+    /* unite vh % de la hauteur du contenu du site*/
+}
+
+aside {
+    width: 25%;
+    padding: 0 15px
+}
+
+aside h4 {
+    color: #fff;
+}
+
+aside nav {
+    margin: 30px 0;
+}
+
+aside nav a {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+}
+
+aside nav a:hover {
+    background: #fff;
+    text-decoration: none;
+}
+
+/* section services */
+#services-nav a {
+    width: 150px;
+    height: 150px;
+    display: block;
+    /* transforme le comportement de l'element a (en ligne) en element en block (dimension possible) */
+    background: #000 url("../images/img-carre.jpg") no-repeat;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    /*prefixe pour les anciennes version de navigateur : chrome - safari */
+    -moz-border-radius: 50%;
+    /* pour firefox*/
+    font-size: .7rem;
+    overflow: hidden;
+    /* permet de cacher ce qui depasse d'un bloc qui a des dimensions fixes */
+    padding: 5px;
+    border: 2px red solid;
+
+}
+
+#services-nav a:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, .3);
+    box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, .3);
+}
+
+#services h3 {
+    transition: all .5s;
+}
+
+#services h3:hover {
+    transform: scale(2);
+}
+
+/* section particularites */
+#particularites ul {
+    justify-content: space-around;
+}
+
+#particularites li {
+    text-align: center;
+    width: 30%;
+}
+
+#particularites li::before {
+    font-size: 3rem;
+    color: #12247a;
+}
+
+/* section adresse */
+#adresse iframe {
+    width: 100%;
+}
+
+/* les tableaux*/
+table {
+    width: 100%;
+    margin: 50px 0;
+    border-collapse: collapse;
+    /* supprime les doule ligne si bordure*/
+
+}
+
+table caption {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+thead,
+tfoot {
+    background: #12247a;
+    color: #fff;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px #000 solid
+}
+
+tbody tr:nth-child(2n + 1) {
+    background: #bbb;
+}
+
+tbody tr:nth-child(2) td:last-child {
+    background: #12247a;
+    color: #fff;
+}
+
+
+
+
+/* footer */
+footer {
+    padding: 30px;
+}
+
+footer.fond-bleu a,
+aside a {
+    color: #fff;
+}
+
+footer>div {
+    /* selecteur d'enfants directs */
+    justify-content: space-between;
+}
+
+footer nav:first-of-type li {
+    margin-bottom: 7px;
+}
+
+footer nav:last-of-type li {
+    margin-right: 20px;
+}
+
+footer i {
+    transition: all .5s;
+}
+
+footer i:hover {
+    transform: rotateY(360deg);
+}
+
+/* 
+footer div nav:last-of-type ul  {
+    display: flex;
+}
+*/
+
+/* Responsive */
+/* breakpoints */
+
+
+/* laptop */
+@media only screen and (max-width: 1280px) {}
+
+/* tablette  */
+@media only screen and (max-width: 1024px) {}
+
+/* mobile  */
+@media only screen and (max-width: 768px) {
+    .gabarit {
+        width: 100%
+    }
+
+    /* 375 px*/
+    #mobile-bt {
+        display: block;
+        position: absolute;
+        right: 11vw;
+        top: 9vh;
+        color: #fff;
+
+    }
+
+    .container {
+        display: none;
+    }
+
+    #primary-nav ul,
+    #back-to-top {
+        display: none;
+    }
+
+    #nav-top-fixed {
+        position: static;
+    }
+
+    /*.align-horiz {
+        flex-direction: column;        
+    }*/
+    header div .align-horiz {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #slider div:first-of-type {
+        font-size: 1.2rem;
+    }
+
+    header+div {
+        /* selecteur pour selectionner un element frere*/
+        flex-direction: column;
+    }
+
+    main,
+    aside {
+        width: 100%;
+    }
+
+    article>h4+div {
+        flex-direction: column;
+    }
+
+    #news article p {
+        width: 100%;
+        margin: 0;
+    }
+
+    #services-nav>ul {
+        flex-direction: column;
+    }
+
+
+}
